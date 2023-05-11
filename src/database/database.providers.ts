@@ -6,8 +6,6 @@ dotenv.config();
 const database = process.env.MONGODB_USER;
 const password = process.env.MONGODB_PASSWORD;
 
-console.log()
-
 export const databaseProviders = [
     {
         provide: 'DATABASE_CONNECTION',
