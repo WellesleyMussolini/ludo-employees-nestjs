@@ -1,25 +1,41 @@
-import { Controller, Get, Post, Put, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Req, Res, Param, HttpStatus } from '@nestjs/common';
+import { Request, Response } from "express";
+import { EmployeesService } from './employees.service';
+import { Employee } from './employee.interface';
 
-@Controller('pets')
-export class PetsController {
+@Controller("employees")
+export class EmployeesController {
+    constructor(private employeesService: EmployeesService) { }
+
     @Get()
-    find_all(): string {
-        return 'GET ALL PETS';
+    async find_all(@Res() res: Response) {
+        const employees = await this.employeesService.findAll();
+        return res.status(HttpStatus.OK).json(employees);
     }
-    @Get(':id')
-    get_by_id(): string {
-        return 'GET PET BY ID';
+
+    @Get(":id")
+    async get_by_id(@Param("id") id: string, @Res() res: Response) {
+        const employee = await this.employeesService.findById(id);
+        return res.status(HttpStatus.OK).json(employee);
     }
+
     @Post()
-    create(): string {
-        return 'CREATES ONE PET';
+    async create(@Req() req: Request, @Res() res: Response) {
+        const employee: Employee = req.body;
+        const createdEmployee = await this.employeesService.create(employee);
+        return res.status(HttpStatus.CREATED).json(createdEmployee);
     }
-    @Put()
-    update(): string {
-        return 'UPDATE A PET';
+    
+    @Put(":id")
+    async update(@Param("id") id: string, @Req() req: Request, @Res() res: Response) {
+        const employee: Employee = req.body;
+        const updatedEmployee = await this.employeesService.updateById(id, employee);
+        return res.status(HttpStatus.OK).json(updatedEmployee);
     }
-    @Delete()
-    remove(): string {
-        return 'DELETING A PET';
+    
+    @Delete(":id")
+    async remove(@Param("id") id: string, @Res() res: Response) {
+        await this.employeesService.deleteById(id);
+        return res.status(HttpStatus.OK).json("employee deleted!");
     }
 }
