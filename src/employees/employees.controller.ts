@@ -25,14 +25,14 @@ export class EmployeesController {
         const createdEmployee = await this.employeesService.create(employee);
         return res.status(HttpStatus.CREATED).json(createdEmployee);
     }
-    
+
     @Put(":id")
     async update(@Param("id") id: string, @Req() req: Request, @Res() res: Response) {
         const employee: Employee = req.body;
         const updatedEmployee = await this.employeesService.updateById(id, employee);
         return res.status(HttpStatus.OK).json(updatedEmployee);
     }
-    
+
     @Delete(":id")
     async remove(@Param("id") id: string, @Res() res: Response) {
         await this.employeesService.deleteById(id);
