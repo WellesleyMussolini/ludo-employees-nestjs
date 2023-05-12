@@ -1,5 +1,5 @@
 import { Connection } from 'mongoose';
-import { EmployeeSchema } from './employees.model';
+import { EmployeeSchema } from './models/employees.model';
 
 export const EmployeesProviders = [
     {
