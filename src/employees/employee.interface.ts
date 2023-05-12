@@ -10,4 +10,5 @@ export class CreateEmployeeDto {
     readonly name: string;
     readonly hired: Boolean;
     readonly role: string;
+    
 }
