@@ -1,7 +1,7 @@
 import { Controller, Get, Post, Put, Delete, Req, Res, Param, HttpStatus } from '@nestjs/common';
 import { Request, Response } from "express";
 import { EmployeesService } from './employees.service';
-import { Employee } from './employee.interface';
+import { Employee } from './dto/employee.interface';
 
 @Controller("employees")
 export class EmployeesController {
