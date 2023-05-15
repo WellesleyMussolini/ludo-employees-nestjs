@@ -8,5 +8,4 @@ export const EmployeesProviders = [
         inject: ['DATABASE_CONNECTION'],
     },
 ];
-
 // REMOVER ESSE ARQUIVO E PASSAR A CONEXÃO PARA O APP.MODULE
