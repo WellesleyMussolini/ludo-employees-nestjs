@@ -5,9 +5,3 @@ export interface Employee extends Document {
     readonly hired: Boolean;
     readonly role: string;
 }
-
-export class CreateEmployeeDto {
-    readonly name: string;
-    readonly hired: Boolean;
-    readonly role: string;
-}
