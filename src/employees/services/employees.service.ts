@@ -4,29 +4,26 @@ import { Employee } from '../interface/employee.interface';
 
 @Injectable()
 export class EmployeesService {
-    constructor(
-        @Inject('EMPLOYEE_MODEL')
-        private employeeModel: Model<Employee>,
-    ) { }
-
-    async create(employee: Employee): Promise<Employee> {
-        const createdEmployee = new this.employeeModel(employee);
-        return createdEmployee.save();
-    }
+    constructor(@Inject('EMPLOYEE_MODEL') private employee: Model<Employee>) { }
 
     async findAll(): Promise<Employee[]> {
-        return this.employeeModel.find().exec();
+        return this.employee.find().exec();
     }
 
     async findById(id: string): Promise<Employee> {
-        return this.employeeModel.findById(id).exec();
+        return this.employee.findById(id).exec();
     }
 
-    async updateById(id: string, employee: Employee): Promise<Employee> {
-        return this.employeeModel.findByIdAndUpdate(id, employee, { new: true }).exec();
+    async create(employee: Employee): Promise<Employee> {
+        const createdEmployee = new this.employee(employee);
+        return createdEmployee.save();
     }
 
-    async deleteById(id: string): Promise<Employee> {
-        return this.employeeModel.findByIdAndRemove(id).exec();
+    async update(id: string, employee: Employee): Promise<Employee> {
+        return this.employee.findByIdAndUpdate(id, employee, { new: true }).exec();
+    }
+
+    async delete(id: string): Promise<Employee> {
+        return this.employee.findByIdAndRemove(id).exec();
     }
 }
