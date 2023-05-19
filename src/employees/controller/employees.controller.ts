@@ -7,6 +7,7 @@ import { Employee } from '../interface/employee.interface';
 export class EmployeesController {
     constructor(private employeesService: EmployeesService) { }
 
+    
     @Get()
     async find_all(@Res() response: Response) {
         const employees = await this.employeesService.findAll();
