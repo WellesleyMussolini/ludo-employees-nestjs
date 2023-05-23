@@ -2,9 +2,16 @@ import { Schema, Document } from 'mongoose';
 
 interface Employee {
   name: string;
+  date: string;
+}
+
+interface WeekDate {
+  started_at: string;
+  end_at: string;
 }
 
 interface WorkSchedule extends Document {
+  week_date: WeekDate;
   monday: Employee[];
   tuesday: Employee[];
   wednesday: Employee[];
@@ -15,11 +22,57 @@ interface WorkSchedule extends Document {
 }
 
 export const WorkScheduleSchema = new Schema<WorkSchedule>({
-  monday: [{ type: Schema.Types.Mixed }],
-  tuesday: [{ type: Schema.Types.Mixed }],
-  wednesday: [{ type: Schema.Types.Mixed }],
-  thursday: [{ type: Schema.Types.Mixed }],
-  friday: [{ type: Schema.Types.Mixed }],
-  saturday: [{ type: Schema.Types.Mixed }],
-  sunday: [{ type: Schema.Types.Mixed }],
+  week_date: {
+    started_at: { type: String },
+    end_at: { type: String },
+  },
+  monday: [
+    {
+      name: { type: String },
+      date: { type: String },
+      _id: false,
+    },
+  ],
+  tuesday: [
+    {
+      name: { type: String },
+      date: { type: String },
+      _id: false,
+    },
+  ],
+  wednesday: [
+    {
+      name: { type: String },
+      date: { type: String },
+      _id: false,
+    },
+  ],
+  thursday: [
+    {
+      name: { type: String },
+      date: { type: String },
+      _id: false,
+    },
+  ],
+  friday: [
+    {
+      name: { type: String },
+      date: { type: String },
+      _id: false,
+    },
+  ],
+  saturday: [
+    {
+      name: { type: String },
+      date: { type: String },
+      _id: false,
+    },
+  ],
+  sunday: [
+    {
+      name: { type: String },
+      date: { type: String },
+      _id: false,
+    },
+  ],
 });
