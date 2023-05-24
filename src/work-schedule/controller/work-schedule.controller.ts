@@ -38,13 +38,20 @@ export class WorkScheduleController {
 
         const workSchedule: WorkScheduleInterface = {
             week_date: { started_at, end_at },
-            monday: [{ name: workScheduleData.monday[0]?.name || 'Undefined', date: monday }],
-            tuesday: [{ name: workScheduleData.tuesday[0]?.name || 'Undefined', date: tuesday }],
-            wednesday: [{ name: workScheduleData.wednesday[0]?.name || 'Undefined', date: wednesday }],
-            thursday: [{ name: workScheduleData.thursday[0]?.name || 'Undefined', date: thursday }],
-            friday: [{ name: workScheduleData.friday[0]?.name || 'Undefined', date: friday }],
-            saturday: [{ name: workScheduleData.saturday[0]?.name || 'Undefined', date: saturday }],
-            sunday: [{ name: workScheduleData.sunday[0]?.name || 'Undefined', date: sunday }],
+            // monday: [{ name: workScheduleData.monday[0]?.name || 'Undefined', date: monday }],
+            // tuesday: [{ name: workScheduleData.tuesday[0]?.name || 'Undefined', date: tuesday }],
+            // wednesday: [{ name: workScheduleData.wednesday[0]?.name || 'Undefined', date: wednesday }],
+            // thursday: [{ name: workScheduleData.thursday[0]?.name || 'Undefined', date: thursday }],
+            // friday: [{ name: workScheduleData.friday[0]?.name || 'Undefined', date: friday }],
+            // saturday: [{ name: workScheduleData.saturday[0]?.name || 'Undefined', date: saturday }],
+            // sunday: [{ name: workScheduleData.sunday[0]?.name || 'Undefined', date: sunday }],
+            monday: [{ name: workScheduleData.monday[0]?.name, date: monday }],
+            tuesday: [{ name: workScheduleData.tuesday[0]?.name, date: tuesday }],
+            wednesday: [{ name: workScheduleData.wednesday[0]?.name, date: wednesday }],
+            thursday: [{ name: workScheduleData.thursday[0]?.name, date: thursday }],
+            friday: [{ name: workScheduleData.friday[0]?.name, date: friday }],
+            saturday: [{ name: workScheduleData.saturday[0]?.name, date: saturday }],
+            sunday: [{ name: workScheduleData.sunday[0]?.name, date: sunday }],
         };
 
         const createdWorkSchedule = await this.workScheduleService.create(workSchedule);
